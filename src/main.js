@@ -10,11 +10,14 @@ import router from './router'
 import store from './store'
 import { TinyEmitter } from 'tiny-emitter'
 
-export const baseURL='http://127.0.0.1:8000/api/'
-export const profileDir=`http://127.0.0.1:8000/storage/ProfileImages/`
-export const projectDir='http://127.0.0.1:8000/storage/ProjectImages/'
-export const cvDir='http://127.0.0.1:8000/storage/cv/';
-export const userId = 1
+// export const baseURL='http://127.0.0.1:8000/api/'
+// export const profileDir=`http://127.0.0.1:8000/storage/ProfileImages/`
+// export const projectDir='http://127.0.0.1:8000/storage/ProjectImages/'
+// export const cvDir='http://127.0.0.1:8000/storage/cv/';
+export const baseURL='http://steviano.infinityfreeapp.com/api/'
+export const profileDir=`http://steviano.infinityfreeapp.com/storage/ProfileImages/`
+export const projectDir='http://steviano.infinityfreeapp.com/storage/ProjectImages/'
+export const cvDir='http://steviano.infinityfreeapp.com/storage/cv/';
 
 const app=createApp(App)
 
