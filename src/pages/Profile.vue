@@ -352,7 +352,7 @@
 <script>
 import axios from "axios";
 import profileImage from "../assets/images/defaultImg.jpg";
-import { baseURL, config,profileDir, userId } from "@/main";
+import { baseURL, config,profileDir, } from "@/main";
 import DeleteModal from "../components/DeleteModal.vue";
 import Alert from '../components/Alert.vue'
 export default {
@@ -426,7 +426,7 @@ export default {
       });
 
          axios
-      .get(`${baseURL}getExpertiseInformation/${userId}`)
+      .get(`${baseURL}getExpertiseInformation/${this.currentUser?.info_token}`)
       .then((res) => {
         console.log(res.data);
         this.expertise=res.data

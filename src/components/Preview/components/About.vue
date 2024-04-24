@@ -17,18 +17,6 @@
         </p>
 
         <p class="font-bold my-4"><a :href="`mailto:${user?.email}`">{{ user?.email }}</a></p>
-
-        <!-- <div class="grid grid-cols-1 md:grid-cols-3 gap-4 py-4">
-          <div class="col-span-1 p-8 rounded-lg bg-white dark:bg-gray-900 dark:shadow-gray-800 dark:shadow-md shadow cursor-pointer" v-for="(_,i) in [1,2,3,]" :key="i">
-            <h1 class="text-lg font-bold">Product Design</h1>
-            <p class="text-sm text-gray-600 dark:text-gray-300">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit
-              cupiditate at accusantium quas molestiae quibusdam, ut, impedit
-              porro totam fugit sunt, quasi mollitia quod eius a? Debitis vero
-              quaerat officia!
-            </p>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>

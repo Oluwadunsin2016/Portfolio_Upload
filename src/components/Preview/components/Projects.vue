@@ -43,13 +43,13 @@
     <div class="px-5 overflow-x-hidden">
       <transition-group tag="div" name="projects" mode="out-in">
     <div
-      class="my-4 grid grid-cols-1 sm:grid-cols-2 gap-8 md:grid-cols-3"
+      class="my-4 grid grid-cols-1 sm:grid-cols-3 gap-8 md:grid-cols-4"
       v-if="currentLocation == 'All'"
     >
       <div
          v-for="(project, index) in selectedProjects"
           :key="index"
-          class="relative group h-[16rem] overflow-hidden rounded-lg col-span-1 cursor-pointer shadow-md dark:shadow-gray-700"
+          class="relative group h-[12rem] overflow-hidden rounded-lg col-span-1 cursor-pointer shadow-md dark:shadow-gray-700"
           @click="showDetail(project)"
       >
          <img
@@ -66,7 +66,7 @@
           </div>
 
             <h4
-              class="absolute bottom-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-transform group-hover:translate-y-0 duration-500 text-white right-0 bg-red-600/70 inline-block px-4 py-2 rounded-md font-bold"
+              class="absolute text-center bottom-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-transform group-hover:translate-y-0 duration-500 text-white right-0 bg-red-600/70 inline-block px-4 py-2 rounded-md font-semibold"
             >
               {{ project.title }}
             </h4>
@@ -78,13 +78,13 @@
     <transition-group tag='div' v-for="(specialization, index) in specializations"
       :key="index"  name="projects" mode="out-in">
     <div
-      class="my-4 grid grid-cols-1 sm:grid-cols-2 gap-8 md:grid-cols-3"
+      class="my-4 grid grid-cols-1 sm:grid-cols-3 gap-8 md:grid-cols-4"
       v-if="currentLocation == specialization"
     >
       <div
          v-for="(project, index) in selectedProjects"
           :key="index"
-          class="relative group h-[16rem] overflow-hidden rounded-lg col-span-1 cursor-pointer shadow-md dark:shadow-gray-700"
+          class="relative group h-[12rem] overflow-hidden rounded-lg col-span-1 cursor-pointer shadow-md dark:shadow-gray-700"
           @click="showDetail(project)"
       >
         <img
@@ -100,7 +100,7 @@
           <font-awesome-icon @click="deleProject(project,$event)" class="text-lg text-red-500" :icon="['fas', 'trash']" />
           </div>
             <h4
-              class="absolute bottom-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-transform group-hover:translate-y-0 duration-500 text-white right-0 bg-red-600/70 inline-block px-4 py-2 rounded-md font-bold"
+              class="absolute text-center bottom-5 left-1/2 transform -translate-x-1/2 -translate-y-1/2 transition-transform group-hover:translate-y-0 duration-500 text-white right-0 bg-red-600/70 inline-block px-4 py-2 rounded-md font-semibold"
             >
               {{ project.title }}
             </h4>

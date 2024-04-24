@@ -1,7 +1,7 @@
 <template>
  <div class="dark:bg-gray-900 bg-gray-50 dark:text-gray-200">
   <Navbar/>
-  <div v-if="show" class="fixed top-[6rem] z-50 w-full text-center px-6">
+  <div v-if="show" class="fixed top-[7rem] z-50 w-full text-center px-6">
     <div class="relative inline-block">
     <font-awesome-icon
               class="ms-4 text-xs cursor-pointer absolute -top-5 -right-5"

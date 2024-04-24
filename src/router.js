@@ -6,6 +6,8 @@ import Profile from "./pages/Profile.vue";
 import VerifyEmail from "./pages/VerifyEmail.vue";
 import ErrorPage from "./pages/ErrorPage.vue";
 import Preview from "./components/Preview/Preview.vue";
+import ResetPassword from "./pages/ResetPassword.vue";
+import ChangePassword from "./pages/ChangePassword.vue";
 
 const routes = [
   {
@@ -45,6 +47,18 @@ const routes = [
     path: "/signup",
     name: "signup",
     component: SignUp,
+    meta: { public: true }, // marked the route as public
+  },
+  {
+    path: "/reset-password",
+    name: "reset",
+    component: ResetPassword,
+    meta: { public: true }, // marked the route as public
+  },
+  {
+    path: "/change-password",
+    name: "change",
+    component: ChangePassword,
     meta: { public: true }, // marked the route as public
   },
 ];

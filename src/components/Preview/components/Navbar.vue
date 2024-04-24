@@ -1,8 +1,10 @@
 <template>
-  <header class="bg-gray-100 dark:bg-gray-800 dark:text-gray-200 py-4 dark:shadow-gray-900 z-[90] shadow-md fixed w-full top-0">
+  <header class="bg-gray-100 dark:bg-gray-800 dark:text-gray-200 py-2 dark:shadow-gray-900 z-[90] shadow-md fixed w-full top-0">
     <div class="mx-auto px-6 lg:px-8">
       <div class="flex justify-between items-center relative">
-        <a href="/">Logo</a>
+        <a href="/" class="h-[3rem] w-[3rem] rounded-full overflow-hidden">
+        <img :src="logo" class="w-full h-full object-cover" alt="logo">
+        </a>
         <ul class="gap-4 hidden md:flex cursor-pointer">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About me</a></li>
@@ -121,6 +123,7 @@
 </template>
 
 <script>
+import logo from '../../../assets/images/my_logo_design.jpg'
 export default {
   name: "Navbar",
   data() {
@@ -129,6 +132,7 @@ export default {
       isChecked: false,
       showLabelOne: false,
       showLabelTwo: false,
+      logo,
     };
   },
 mounted(){
