@@ -104,6 +104,9 @@ methods: {
       if (this.loginDetails.email == "") {
         this.error.email = true;
         this.errorMessage.email = "Email is required";
+      }else{
+        this.error.email = false;
+        this.errorMessage.email = "";
       }
     },
 
@@ -111,11 +114,15 @@ methods: {
       if (this.loginDetails.password == "") {
         this.error.password = true;
         this.errorMessage.password = "Password is required";
+      }else{
+        this.error.password = false;
+        this.errorMessage.password = "";
       }
     },
 
     forgot(){
-if (this.loginDetails.email!=='') {
+    this.validateEmail()
+if (this.error.email==false) {
 this.resetLoading=true
   axios.post(`${baseURL}forgottenPassword`,{email:this.loginDetails.email}).then(res=>{
 console.log(res)
@@ -147,13 +154,6 @@ if (res.data.error) {
       this.showAlert=false
       },2000)
 })
-} else {
-       this.message='Provide your email'
-      this.alertType='error'
-        this.showAlert=true
-      setTimeout(()=>{
-      this.showAlert=false
-      },2000)
 }
     },
 
