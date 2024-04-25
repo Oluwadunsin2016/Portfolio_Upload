@@ -16,11 +16,7 @@
           <li><a href="#projects">Projects</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <div class="hidden items-center gap-4 md:flex">
-          <button class="bg-blue-700 py-1 px-3 rounded text-white">
-            Hire Me
-          </button>
-          |
+        <div class="hidden items-center md:flex">
            <span :class="`${!showLabelTwo&&'hidden'} animate-bounce absolute top-10 right-0 bg-slate-200 dark:bg-slate-500 rounded-full px-3 py-1`">{{isChecked?'Change to light mode':'Change to dark mode'}}</span>
         <label for="toggleSwitch" class="relative h-6 w-12 cursor-pointer" @mouseover="showLabelTwo=true" @mouseleave="showLabelTwo=false">
           <input
@@ -119,9 +115,6 @@
           <a href="#contact" class="block">Contact</a>
         </li>
       </ul>
-      <button class="bg-blue-700 py-1 px-3 rounded text-white my-2">
-        Hire Me
-      </button>
     </div>
 </template>
 

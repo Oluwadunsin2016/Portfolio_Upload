@@ -1,5 +1,5 @@
 <template>
-  <div id="languages" class="px-6 lg:px-8 py-8">
+  <div id="languages" class="px-4 md:px-6 lg:px-8 py-8">
    <DeleteLanguageModal />
     <EditLanguageModal />
     <h1 class="text-center text-3xl font-bold">Programming Languages</h1>

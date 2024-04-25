@@ -1,6 +1,6 @@
 <template>
   <div
-    class="my-10 px-6 mt-12 lg:px-8 py-[3rem] md:flex flex-row-reverse shadow bg-slate-100 dark:bg-gray-800 dark:shadow-gray-850"
+    class="my-10 px-4 mt-12 lg:px-8 py-[3rem] md:flex flex-row-reverse shadow bg-slate-100 dark:bg-gray-800 dark:shadow-gray-850"
     id="home"
   >
   <ProfileImage :profilePicture="profileImage" />
@@ -26,6 +26,7 @@
 
 import Typewriter from 'typewriter-effect/dist/core';
 import ProfileImage from './ProfileImage.vue';
+import defaultImg from '../../../assets/images/defaultImg.jpg'
 import axios from 'axios';
 import Loader from "./Loader.vue";
 import { watch } from 'vue';
@@ -42,6 +43,7 @@ export default {
   data() {
     return {
       profileImage:'',
+      defaultImg,
       specializations:[],
       currentUser: {},
       user_token:'',
@@ -51,7 +53,7 @@ export default {
   computed: {
     myProfileImage() {
     console.log(`${profileDir}${this.user?.profileImage}`);
-      return `${profileDir}${this.user?.profileImage}` 
+      return this.user?.profileImage?`${profileDir}${this.user?.profileImage}`:defaultImg 
     },
   },
   mounted(){
