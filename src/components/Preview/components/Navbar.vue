@@ -1,10 +1,11 @@
 <template>
-  <header class="bg-gray-100 dark:bg-gray-800 dark:text-gray-200 py-2 dark:shadow-gray-900 z-[90] shadow-md fixed w-full top-0">
+  <header class="bg-gray-100 dark:bg-gray-800 dark:text-gray-200 py-4 dark:shadow-gray-900 z-[90] shadow-md fixed w-full top-0">
     <div class="mx-auto px-6 lg:px-8">
       <div class="flex justify-between items-center relative">
-        <a href="/" class="h-[3rem] w-[3rem] rounded-full overflow-hidden">
+        <!-- <a href="/" class="h-[3rem] w-[3rem] rounded-full overflow-hidden">
         <img :src="logo" class="w-full h-full object-cover" alt="logo">
-        </a>
+        </a> -->
+        <h1 class="text-2xl tracking-wider uppercase font-helvetica font-medium text-blue-400">Portfolio</h1>
         <ul class="gap-4 hidden md:flex cursor-pointer">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About me</a></li>
@@ -174,13 +175,8 @@ if (localStorage.isChecked) {
 </script>
 
 <style>
-
-/* .view-enter-from,.view-leave-to{
-opacity:0;
-transform:translateY(-5px)
+.font-helvetica{
+font-family: Exo\ 2,Helvetica Neue,Arial,sans-serif !important;
+font-weight: 600;
 }
-
-.view-enter-active,.view-leave-active{
-transition:all 0.3s ease-in-out;
-} */
 </style>
