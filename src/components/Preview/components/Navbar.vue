@@ -5,7 +5,7 @@
         <!-- <a href="/" class="h-[3rem] w-[3rem] rounded-full overflow-hidden">
         <img :src="logo" class="w-full h-full object-cover" alt="logo">
         </a> -->
-        <a href="/" class="text-2xl tracking-wider uppercase font-helvetica font-medium text-blue-400">
+        <a href="/" class="cursor-pointer text-2xl tracking-wider uppercase font-helvetica font-medium text-blue-400">
         Portfolio
         </a>
         <ul class="gap-4 hidden md:flex cursor-pointer">
