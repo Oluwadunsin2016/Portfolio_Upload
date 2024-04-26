@@ -124,6 +124,7 @@ methods: {
     this.validateEmail()
 if (this.error.email==false) {
 this.resetLoading=true
+wondow.emitter.emit('email',this.loginDetails.email)
   axios.post(`${baseURL}forgottenPassword`,{email:this.loginDetails.email}).then(res=>{
 console.log(res)
 this.resetLoading=false
