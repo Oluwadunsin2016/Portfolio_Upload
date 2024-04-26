@@ -53,7 +53,7 @@
           @click="showDetail(project)"
       >
          <img
-            :src="`${projectDir}${project.image}`"
+            :src="project?.image"
             :alt="project.title"
             class="w-full h-full rounded-lg transform transition-transform ease-in-out duration-500 group-hover:scale-110"
           />
@@ -88,7 +88,7 @@
           @click="showDetail(project)"
       >
         <img
-            :src="`${projectDir}${project.image}`"
+            :src="project?.image"
             :alt="project.title"
             class="w-full h-full rounded-lg transform transition-transform ease-in-out duration-500 group-hover:scale-110"
           />
@@ -116,7 +116,7 @@
 </template>
 
 <script>
-import { baseURL, projectDir } from "@/main";
+import { baseURL } from "@/main";
 import ProjectDetail from "./ProjectDetail.vue";
 import DeleteProjectModal from "./Modals/DeleteProjectModal.vue";
 import EditProjectModal from "./Modals/EditProjectModal.vue";
@@ -134,7 +134,6 @@ export default {
   },
   data() {
     return {
-      projectDir,
       projectDetail: {},
       currentLocation: "All",
       selectedProjects: [],

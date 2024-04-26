@@ -3,7 +3,7 @@
     class="my-10 px-4 mt-12 lg:px-8 py-[3rem] md:flex flex-row-reverse shadow bg-slate-100 dark:bg-gray-800 dark:shadow-gray-850"
     id="home"
   >
-  <ProfileImage :profilePicture="profileImage" />
+  <ProfileImage :profilePicture="user?.profileImage??defaultImg" />
     <div class="w-full md:w-[80%] lg:w-[60%] mt-4 md:mx-10 px-5">
       <p class="font-semibold text-2xl">
         Hi, I'm <span class="text-blue-500">{{user?.lastName}}</span>
@@ -16,6 +16,7 @@
       <div class="flex gap-10 mt-10">
       <a href="https://meet.google.com/" class="bg-blue-500 rounded text-white py-2 px-4 hover:bg-blue-700">Book a Meeting</a>
       <a :href="downloadCV" class="border-2 border-blue-700 rounded py-2 px-4 hover:bg-blue-700 hover:text-white">Download CV</a>
+      <!-- <a :href="user?.cv_URL" class="border-2 border-blue-700 rounded py-2 px-4 hover:bg-blue-700 hover:text-white">Download CV</a> -->
       </div>   
     </div>
   </div>
@@ -30,7 +31,7 @@ import defaultImg from '../../../assets/images/defaultImg.jpg'
 import axios from 'axios';
 import Loader from "./Loader.vue";
 import { watch } from 'vue';
-import { baseURL, profileDir, } from '@/main';
+import { baseURL } from '@/main';
 export default {
   name: "Hero",
   props: {
@@ -42,19 +43,11 @@ export default {
   },
   data() {
     return {
-      profileImage:'',
       defaultImg,
       specializations:[],
       currentUser: {},
       user_token:'',
-      // my_cv,
     };
-  },
-  computed: {
-    myProfileImage() {
-    console.log(`${profileDir}${this.user?.profileImage}`);
-      return this.user?.profileImage?`${profileDir}${this.user?.profileImage}`:defaultImg 
-    },
   },
   mounted(){
      console.log(this.user);
@@ -96,9 +89,7 @@ res.data.forEach(specialization => {
   },
 
   methods: {
-    name() {
-      
-    },
+  
   },
 };
 </script>

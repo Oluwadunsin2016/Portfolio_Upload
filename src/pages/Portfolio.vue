@@ -22,18 +22,29 @@
           ></textarea>
         </div>
         <div class="my-4">
-          <label for="image" class="block text-gray-500 dark:text-gray-200"
-            >Upload your CV</label
+          <p class="block text-gray-500 dark:text-gray-200"
+            >Upload your CV</p
           >
-          <input
-            type="file"
-            id="file"
-            ref="cvFile"
-            @change="selectCV"
-            class="border border-gray-300 bg-transparent dark:border-gray-700 dark:bg-gray-900 dark:focus:border-indigo-600 w-full rounded outline-none focus:border-indigo-400 p-2 shadow-sm"
-          />
+               <label
+              for="cvSelectInput"
+              class="border border-gray-300 bg-transparent dark:border-gray-700 dark:bg-gray-900 outline-none focus:border-indigo-400  p-[2px] rounded flex justify-between items-center  cursor-pointer"
+            >
+              <input
+                type="file"
+                ref="cvFile"
+                @change="selectCV"
+                class="hidden"
+                id="cvSelectInput"
+              />
+              <span
+              class="inline-flex items-center px-4 py-[6px] bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-sm text-white dark:text-gray-800 tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150 shadow-sm"
+              >
+                Browse
+              </span>
+            </label>
         </div>
       </div>
+
       <!-- social information -->
       <div
         class="p-8 shadow-md bg-slate-100 dark:bg-gray-800 dark:shadow-gray-850 rounded-md my-8"
@@ -390,16 +401,26 @@
           </div>
         </div>
         <div class="my-4">
-          <label for="image" class="block text-gray-500 dark:text-gray-200"
-            >Display Image</label
+          <p class="block text-gray-500 dark:text-gray-200"
+            >Display Image</p
           >
-          <input
-            type="file"
-            name="image"
-            ref="file"
-            @change="selectedFile"
-            class="border border-gray-300 bg-transparent dark:border-gray-700 dark:bg-gray-900 dark:focus:border-indigo-600 w-full rounded outline-none focus:border-indigo-400 p-2 shadow-sm"
-          />
+             <label
+              for="projectDisplayInput"
+              class="border border-gray-300 bg-transparent dark:border-gray-700 dark:bg-gray-900 outline-none focus:border-indigo-400  p-[2px] rounded flex justify-between items-center  cursor-pointer"
+            >
+              <input
+                type="file"
+                ref="file"
+                @change="selectedFile"
+                class="hidden"
+                id="projectDisplayInput"
+              />
+              <span
+              class="inline-flex items-center px-4 py-[6px] bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-sm text-white dark:text-gray-800 tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150 shadow-sm"
+              >
+                Browse
+              </span>
+            </label>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
           <div>

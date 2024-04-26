@@ -22,6 +22,16 @@
       >
         <div class="h-[12rem] w-[12rem] mx-4 md:mx-0 cursor-pointer relative rounded-lg group">
           <div
+            class="absolute bg-black bg-opacity-70 top-0 left-0 h-full w-full rounded-lg flex justify-center items-center transition-all"
+            v-if="profileUploading"
+          >
+          <svg xmlns="http://www.w3.org/2000/svg" height="80px" width="80px" viewBox="0 0 200 200"><radialGradient id="a12" cx=".66" fx=".66" cy=".3125" fy=".3125" gradientTransform="scale(1.5)"><stop offset="0" stop-color="#e5e7eb"></stop><stop offset=".3" stop-color="#e5e7eb" stop-opacity=".9"></stop><stop offset=".6" stop-color="#e5e7eb" stop-opacity=".6"></stop><stop offset=".8" stop-color="#e5e7eb" stop-opacity=".3"></stop><stop offset="1" stop-color="#e5e7eb" stop-opacity="0"></stop></radialGradient><circle transform-origin="center" fill="none" stroke="url(#a12)" stroke-width="15" stroke-linecap="round" stroke-dasharray="200 1000" stroke-dashoffset="0" cx="100" cy="100" r="70"><animateTransform type="rotate" attributeName="transform" calcMode="spline" dur="1" values="360;0" keyTimes="0;1" keySplines="0 0 1 1" repeatCount="indefinite"></animateTransform></circle><circle transform-origin="center" fill="none" opacity=".2" stroke="#e5e7eb" stroke-width="15" stroke-linecap="round" cx="100" cy="100" r="70"></circle></svg> 
+           <font-awesome-icon
+              :icon="['fas', 'camera-retro']"
+              class="text-2xl text-gray-200 absolute "
+            />
+          </div>
+          <div
             class="absolute bg-black bg-opacity-50 top-0 left-0 h-full w-full rounded-lg hidden group-hover:inline-flex justify-center items-center transition-all"
             @click="handleSelectProfileImg"
           >
@@ -31,7 +41,7 @@
             />
           </div>
           <img
-            :src="`${currentUser?.profileImage ? `${profileDir}${currentUser?.profileImage}`: profileImage}`"
+            :src="`${currentUser?.profileImage ?? profileImage}`"
             alt="profileImg"
             class="rounded-lg object-cover object-top w-full h-full z-0"
           />
@@ -194,18 +204,27 @@
         ></textarea>
       </div>
       <div class="my-4">
-        <label for="image" class="block text-gray-500 dark:text-gray-200"
-          >Update your CV</label
+        <p class="block text-gray-500 dark:text-gray-200"
+          >Update your CV</p
         >
-        <input
-          type="file"
-          name="image"
-          id="file"
-          ref="cvFile"
-          @change="selectCV"
-          :disabled="!aboutEditMode"
-          class="border border-gray-300 bg-transparent dark:border-gray-700 dark:bg-gray-900 dark:focus:border-indigo-600 w-full rounded outline-none focus:border-indigo-400 p-2 shadow-sm"
-        />
+         <label
+              for="selectCV"
+              class="border border-gray-300 bg-transparent dark:border-gray-700 dark:bg-gray-900 outline-none focus:border-indigo-400  p-[2px] rounded flex justify-between items-center  cursor-pointer"
+            >
+              <input
+                type="file"
+                ref="cvFile"
+                @change="selectCV"
+                class="hidden"
+                id="selectCV"
+                :disabled="!aboutEditMode"
+              />
+              <span
+              class="inline-flex items-center px-4 py-[6px] bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-sm text-white dark:text-gray-800 tracking-widest hover:bg-gray-700 dark:hover:bg-white focus:bg-gray-700 dark:focus:bg-white active:bg-gray-900 dark:active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 transition ease-in-out duration-150 shadow-sm"
+              >
+                Browse
+              </span>
+            </label>
       </div>
       <div class="mt-4 flex justify-end gap-4" v-if="aboutEditMode">
       <button class="inline-flex items-center px-4 py-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-500 rounded-md font-semibold text-xs text-gray-700 dark:text-gray-300 uppercase tracking-widest shadow-sm hover:bg-gray-50 dark:hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800 disabled:opacity-25 transition ease-in-out duration-150" @click="cancelAboutEdit">Cancel</button>
@@ -352,7 +371,7 @@
 <script>
 import axios from "axios";
 import profileImage from "../assets/images/defaultImg.jpg";
-import { baseURL, config,profileDir, } from "@/main";
+import { baseURL, config } from "@/main";
 import DeleteModal from "../components/DeleteModal.vue";
 import Alert from '../components/Alert.vue'
 export default {
@@ -362,7 +381,6 @@ export default {
   },
   data() {
     return {
-    profileDir,
       profileEditMode: false,
       aboutEditMode: false,
       profileImage,
@@ -373,6 +391,7 @@ export default {
        profileSaving:false,
        aboutSaving:false,
        passwordSaving:false,
+       profileUploading:false,
         alertType:'',
         message:'',
       myCV: "",
@@ -417,7 +436,7 @@ export default {
       .get(`${baseURL}getUser`, config)
       .then((res) => {
         this.currentUser = res.data;
-        console.log(res.data.info_token);
+        console.log(res.data);
         window.emitter.emit('user_token',res.data.info_token)
         window.user_token=res.data.info_token
       })
@@ -749,6 +768,7 @@ export default {
       const formData =new FormData();
       formData.append("profileImage",base64);
       console.log(base64);
+      this.profileUploading=true;
       axios
         .post(
           `${baseURL}updateProfileImage`,
@@ -766,6 +786,7 @@ export default {
         )
         .then((res) => {
           console.log(res.data);
+          this.profileUploading=false;
           if(!res.data.error){
            this.message=res.data.message
            this.currentUser=res.data.user
