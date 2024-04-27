@@ -83,7 +83,7 @@ setTimeout(()=>{
   },
   computed: {
     subStringProfileName() {
-    const name=`${this.currentUser?.firstName} ${ this.currentUser?.lastName }`;
+    const name=`${ this.currentUser?.lastName } ${this.currentUser?.firstName}`;
     const container=document.getElementById('ProfileName')
       if (container.scrollWidth > container.clientWidth) {
     return name.substring(0, name.length - 3) + '...';
@@ -95,20 +95,7 @@ setTimeout(()=>{
   methods: {
     handleDropDown() {
         this.isOpen = !this.isOpen;
-    // if (this.isOpen) {
-    // console.log("I'm seen");
-    //     document.removeEventListener("click", this.closeDropdownOutside);
-    // } else {
-    // console.log("I'm not seen"); 
-    //     document.addEventListener("click", this.closeDropdownOutside);
-    // }
     },
-
-    // closeDropdownOutside(event) {
-    //   if (!this.$el.contains(event.target)) {
-    //     this.handleDropDown();
-    //   }
-    // },
 
     ...mapActions(["logout"]),
   },

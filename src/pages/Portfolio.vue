@@ -27,7 +27,7 @@
           >
                <label
               for="cvSelectInput"
-              class="border border-gray-300 bg-transparent dark:border-gray-700 dark:bg-gray-900 outline-none focus:border-indigo-400  p-[2px] rounded flex justify-between items-center  cursor-pointer"
+              class="border border-gray-300 bg-transparent dark:border-gray-700 dark:bg-gray-900 outline-none focus:border-indigo-400  p-[2px] rounded flex gap-2 items-center  cursor-pointer"
             >
               <input
                 type="file"
@@ -41,6 +41,7 @@
               >
                 Browse
               </span>
+              <span>{{myCV?.name}}</span>
             </label>
         </div>
       </div>
@@ -406,7 +407,7 @@
           >
              <label
               for="projectDisplayInput"
-              class="border border-gray-300 bg-transparent dark:border-gray-700 dark:bg-gray-900 outline-none focus:border-indigo-400  p-[2px] rounded flex justify-between items-center  cursor-pointer"
+              class="border border-gray-300 bg-transparent dark:border-gray-700 dark:bg-gray-900 outline-none focus:border-indigo-400  p-[2px] rounded flex gap-2 items-center  cursor-pointer"
             >
               <input
                 type="file"
@@ -420,6 +421,7 @@
               >
                 Browse
               </span>
+               <span>{{selectedProjectImg?.name}}</span>
             </label>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">
@@ -506,6 +508,7 @@ export default {
       alertType: "",
       loading:false,
       message: "",
+      selectedProjectImg:"",
       myCV: "",
       selfDescription: "",
       social_information: {
@@ -781,6 +784,7 @@ export default {
     // Selecting a project cover picture
     selectedFile(e) {
       const file = e.target.files[0];
+      this.selectedProjectImg=file
       const fileReader = new FileReader();
       fileReader.onloadend = () => {
         this.project.image = fileReader.result;

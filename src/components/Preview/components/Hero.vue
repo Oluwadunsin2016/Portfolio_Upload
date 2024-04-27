@@ -15,12 +15,12 @@
 
       <div class="flex gap-10 mt-10">
       <a href="https://meet.google.com/" class="bg-blue-500 rounded text-white py-2 px-4 hover:bg-blue-700">Book a Meeting</a>
-      <a :href="downloadCV" class="border-2 border-blue-700 rounded py-2 px-4 hover:bg-blue-700 hover:text-white">Download CV</a>
-      <!-- <a :href="user?.cv_URL" class="border-2 border-blue-700 rounded py-2 px-4 hover:bg-blue-700 hover:text-white">Download CV</a> -->
+      <button @click="downloadCV" class="border-2 border-blue-700 rounded py-2 px-4 hover:bg-blue-700 hover:text-white">Download CV</button>
       </div>   
     </div>
   </div>
   <Loader/>
+   <Alert :alertType="alertType" :showAlert="showAlert" :alertText="message" />
 </template>
 
 <script>
@@ -28,6 +28,7 @@
 import Typewriter from 'typewriter-effect/dist/core';
 import ProfileImage from './ProfileImage.vue';
 import defaultImg from '../../../assets/images/defaultImg.jpg'
+import Alert from './Alert.vue'
 import axios from 'axios';
 import Loader from "./Loader.vue";
 import { watch } from 'vue';
@@ -40,10 +41,14 @@ export default {
   components:{
   ProfileImage,
       Loader,
+      Alert
   },
   data() {
     return {
       defaultImg,
+        showAlert:false,
+        alertType:'',
+        message:'',
       specializations:[],
       currentUser: {},
       user_token:'',
@@ -83,13 +88,21 @@ res.data.forEach(specialization => {
       });
   },
   computed: {
-    downloadCV() {
-    return `${baseURL}download-pdf/${this.user.info_token}`
-    },
   },
 
   methods: {
-  
+    downloadCV() {
+    axios.get(`${baseURL}download-pdf/${this.user.info_token}`).then(res=>{
+    if (res.data.error) {
+            this.message=res.data.message
+      this.alertType='error'
+        this.showAlert=true
+      setTimeout(()=>{
+      this.showAlert=false
+      },2000)
+    }
+    })
+    },
   },
 };
 </script>

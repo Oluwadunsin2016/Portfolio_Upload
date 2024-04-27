@@ -209,7 +209,7 @@
         >
          <label
               for="selectCV"
-              class="border border-gray-300 bg-transparent dark:border-gray-700 dark:bg-gray-900 outline-none focus:border-indigo-400  p-[2px] rounded flex justify-between items-center  cursor-pointer"
+              class="border border-gray-300 bg-transparent dark:border-gray-700 dark:bg-gray-900 outline-none focus:border-indigo-400  p-[2px] rounded flex gap-2 items-center  cursor-pointer"
             >
               <input
                 type="file"
@@ -224,6 +224,7 @@
               >
                 Browse
               </span>
+               <span>{{myCV?.name}}</span>
             </label>
       </div>
       <div class="mt-4 flex justify-end gap-4" v-if="aboutEditMode">
@@ -774,15 +775,6 @@ export default {
           `${baseURL}updateProfileImage`,
           formData,
           config,
-          {
-            onUploadProgress: (progressEvent) => {
-              const percentCompleted = Math.round(
-                (progressEvent.loaded * 100) / progressEvent.total
-              );
-              this.uploadProgress = percentCompleted;
-              console.log(percentCompleted);
-            },
-          },
         )
         .then((res) => {
           console.log(res.data);
