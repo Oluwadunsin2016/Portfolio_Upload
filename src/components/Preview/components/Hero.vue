@@ -93,15 +93,18 @@ res.data.forEach(specialization => {
   methods: {
     downloadCV() {
     axios.get(`${baseURL}download-pdf/${this.user.info_token}`).then(res=>{
-    if (res.data.error) {
-            this.message=res.data.message
+    console.log(res);
+    }).catch((error) => {
+          console.log(error);
+          if (error.response.data.message) { 
+            this.message=error.response.data.message
       this.alertType='error'
         this.showAlert=true
       setTimeout(()=>{
       this.showAlert=false
       },2000)
-    }
-    })
+          }
+        });
     },
   },
 };
