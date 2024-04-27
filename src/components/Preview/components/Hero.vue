@@ -6,7 +6,7 @@
   <ProfileImage :profilePicture="user?.profileImage??defaultImg" />
     <div class="w-full md:w-[80%] lg:w-[60%] mt-4 md:mx-10 px-5">
       <p class="font-semibold text-2xl">
-        Hi, I'm <span class="text-blue-500">{{user?.lastName}}</span>
+        Hi, I'm <span class="text-blue-500">{{user?.firstName}}</span>
       </p>
       <h1 id="writer" class="text-3xl font-bold my-2"></h1>
       <p class="my-4 text-lg">
