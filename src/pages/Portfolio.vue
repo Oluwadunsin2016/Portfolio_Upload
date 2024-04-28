@@ -830,6 +830,7 @@ export default {
           description: "",
         };
         this.$refs.file.value = "";
+        this.selectedProjectImg='';
       }
     },
 
@@ -1119,6 +1120,7 @@ export default {
               }, 2000);
               this.projects = [];
               this.$refs.file.value = "";
+              this.selectedProjectImg=""
               this.project = {
                 title: "",
                 category: "",
