@@ -41,7 +41,8 @@
               >
                 Browse
               </span>
-              <span>{{myCV?.name}}</span>
+              <span v-if="myCV?.name">{{myCV?.name}}</span>
+              <span class="text-xs text-gray-400" v-else>Less than 500kb</span>
             </label>
         </div>
       </div>
@@ -421,7 +422,8 @@
               >
                 Browse
               </span>
-               <span>{{selectedProjectImg?.name}}</span>
+               <span v-if="selectedProjectImg?.name">{{selectedProjectImg?.name}}</span>
+               <span class="text-xs text-gray-400" v-else>Less than 500kb</span>
             </label>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 my-4">

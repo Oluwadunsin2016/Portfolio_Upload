@@ -32,13 +32,14 @@
             />
           </div>
           <div
-            class="absolute bg-black bg-opacity-50 top-0 left-0 h-full w-full rounded-lg hidden group-hover:inline-flex justify-center items-center transition-all"
+            class="absolute bg-black bg-opacity-50 top-0 left-0 h-full w-full rounded-lg hidden group-hover:flex flex-col justify-center items-center transition-all"
             @click="handleSelectProfileImg"
           >
             <font-awesome-icon
               :icon="['fas', 'camera-retro']"
               class="text-2xl text-gray-200"
             />
+              <span class="text-xs text-gray-300">Less than 500kb</span>
           </div>
           <img
             :src="`${currentUser?.profileImage ?? profileImage}`"
@@ -224,7 +225,8 @@
               >
                 Browse
               </span>
-               <span>{{myCV?.name}}</span>
+                <span v-if="myCV?.name">{{myCV?.name}}</span>
+              <span class="text-xs text-gray-400" v-else>Less than 500kb</span>
             </label>
       </div>
       <div class="mt-4 flex justify-end gap-4" v-if="aboutEditMode">
