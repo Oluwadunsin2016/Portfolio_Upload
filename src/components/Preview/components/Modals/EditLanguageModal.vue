@@ -97,10 +97,10 @@ this.isOpened=false
       setTimeout(()=>{
       this.showAlert=false
       },2000)
-    }
                 this.projects=[]
                 this.project={}
                 this.isOpened=false
+    }
               })
               .catch((err) => {
               this.loading=false

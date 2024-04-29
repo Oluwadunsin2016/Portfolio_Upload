@@ -167,9 +167,9 @@ this.isOpened=false
       setTimeout(()=>{
       this.showAlert=false
       },2000)
-    }
                 this.social_information={}
-                this.isOpened=false
+      this.isOpened=false
+    }
               })
               .catch((err) => {
               this.loading=false
