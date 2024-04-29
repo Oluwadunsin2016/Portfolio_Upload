@@ -15,7 +15,8 @@
 
       <div class="flex gap-10 mt-10">
       <a href="https://meet.google.com/" class="bg-blue-500 rounded text-white py-2 px-4 hover:bg-blue-700">Book a Meeting</a>
-      <button @click="downloadCV" class="border-2 border-blue-700 rounded py-2 px-4 hover:bg-blue-700 hover:text-white">Download CV</button>
+      <a :href="downloadCV" @click="handleClick" class="border-2 border-blue-700 rounded py-2 px-4 hover:bg-blue-700 hover:text-white">Download CV</a>
+      <!-- <button @click="downloadCV" class="border-2 border-blue-700 rounded py-2 px-4 hover:bg-blue-700 hover:text-white">Download CV</button> -->
       </div>   
     </div>
   </div>
@@ -50,7 +51,6 @@ export default {
         alertType:'',
         message:'',
       specializations:[],
-      currentUser: {},
       user_token:'',
     };
   },
@@ -88,24 +88,44 @@ res.data.forEach(specialization => {
       });
   },
   computed: {
+     downloadCV() {
+           if (!this.user.cv_URL) {
+      return '#'
+          }else{
+          
+    return `${baseURL}download-pdf/${this.user.info_token}`
+          }
+    },
   },
 
   methods: {
-    downloadCV() {
-    axios.get(`${baseURL}download-pdf/${this.user.info_token}`).then(res=>{
-    console.log(res);
-    }).catch((error) => {
-          console.log(error);
-          if (error.response.data.message) { 
-            this.message=error.response.data.message
+  handleClick(){
+  console.log(this.user)
+           if (!this.user.cv_URL) { 
+            this.message="User doesn't have a CV yet"
       this.alertType='error'
         this.showAlert=true
       setTimeout(()=>{
       this.showAlert=false
       },2000)
           }
-        });
-    },
+  },
+    // downloadCV() {
+    // axios.get(`${baseURL}download-pdf/${this.user.info_token}`).then(res=>{
+    // console.log(res);
+    // }).catch((error) => {
+    //       console.log(error);
+    //   //     if (error.response.data.message) { 
+    //   //     log(error)
+    //   //       this.message=error.response.data.message
+    //   // this.alertType='error'
+    //   //   this.showAlert=true
+    //   // setTimeout(()=>{
+    //   // this.showAlert=false
+    //   // },2000)
+    //   //     }
+    //     });
+    // },
   },
 };
 </script>
