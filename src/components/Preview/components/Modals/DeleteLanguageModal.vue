@@ -32,7 +32,7 @@
 <script>
 import axios from "axios";
 import { baseURL, config} from "@/main";
-import Alert from '../../../Alert.vue'
+import Alert from '../Alert.vue'
 export default {
   components: {
     Alert
