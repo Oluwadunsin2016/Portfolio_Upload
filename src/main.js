@@ -14,7 +14,9 @@ import { TinyEmitter } from 'tiny-emitter'
 // export const baseURL='http://127.0.0.1:8000/api/'
 
 // Remote directory
-export const baseURL='https://porfolio-server-production.up.railway.app/api/'
+// export const baseURL='https://porfolio-server-production.up.railway.app/api/'
+// export const baseURL='https://porfolio-server-production.up.railway.app/api/'
+export const baseURL='https://porfolio-server-dnqn.onrender.com/api/'
 
 const app=createApp(App)
 
